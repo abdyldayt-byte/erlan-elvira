@@ -70,13 +70,3 @@ const observer = new IntersectionObserver((entries) => {
 
 revealEls.forEach((el) => observer.observe(el));
 observer.unobserve(document.querySelector('.hero'));
-
-// RSVP form
-const form = document.getElementById('rsvpForm');
-const success = document.getElementById('rsvpSuccess');
-
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  form.style.display = 'none';
-  success.classList.add('show');
-});
