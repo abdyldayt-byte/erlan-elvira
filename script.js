@@ -71,28 +71,27 @@ const observer = new IntersectionObserver((entries) => {
 revealEls.forEach((el) => observer.observe(el));
 observer.unobserve(document.querySelector('.hero'));
 
-// Program timeline heart animation on scroll
-function updateHeartPosition() {
-  const heart = document.querySelector('.program-heart');
-  const timeline = document.querySelector('.program-timeline-vertical');
+// Program timeline: heart rides exactly along the wavy SVG path as the user scrolls
+const programPath = document.getElementById('programPath');
+const programHeart = document.getElementById('programHeart');
+const programTimeline = document.querySelector('.program-timeline-vertical');
 
-  if (!heart || !timeline) return;
+if (programPath && programHeart && programTimeline) {
+  const pathLength = programPath.getTotalLength();
 
-  const timelineRect = timeline.getBoundingClientRect();
-  const timelineTop = timelineRect.top + window.scrollY;
-  const timelineHeight = timelineRect.height;
+  const updateHeartOnPath = () => {
+    const rect = programTimeline.getBoundingClientRect();
+    const timelineTop = rect.top + window.scrollY;
+    const progress = Math.max(0, Math.min(1, (window.scrollY - timelineTop) / rect.height));
 
-  const scrollY = window.scrollY;
-  const heartProgress = Math.max(0, Math.min(1, (scrollY - timelineTop) / timelineHeight));
+    const point = programPath.getPointAtLength(progress * pathLength);
+    const scale = rect.width / 340; // viewBox width -> rendered width
 
-  const heartTop = timelineTop + (heartProgress * timelineHeight);
+    programHeart.style.left = (point.x * scale) + 'px';
+    programHeart.style.top = (point.y * scale) + 'px';
+  };
 
-  heart.style.top = heartTop + 'px';
-  heart.style.opacity = heartProgress < 0.95 ? 1 : Math.max(0, 1 - (heartProgress - 0.95) / 0.05);
+  window.addEventListener('scroll', updateHeartOnPath, { passive: true });
+  window.addEventListener('resize', updateHeartOnPath);
+  updateHeartOnPath();
 }
-
-window.addEventListener('scroll', updateHeartPosition, { passive: true });
-window.addEventListener('resize', updateHeartPosition);
-
-// Initial position
-updateHeartPosition();

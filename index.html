@@ -144,11 +144,21 @@
   <div class="program-wrapper">
     <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">Тойдун программасы</h2>
     <div class="program-timeline-vertical">
-      <svg class="program-line-svg" viewBox="0 0 100 700" preserveAspectRatio="none">
-        <path d="M 50 0 Q 30 70, 50 140 Q 70 210, 50 280 Q 30 350, 50 420 Q 70 490, 50 560 Q 30 630, 50 700"
-              stroke="#b08d5b" stroke-width="2" fill="none" opacity="0.8"/>
+      <svg class="program-line-svg" id="programSvg" viewBox="0 0 340 950" preserveAspectRatio="none">
+        <path id="programPath" d="M 170 0
+          C 170 40, 240 55, 240 95
+          C 240 135, 170 150, 170 190
+          C 170 230, 100 245, 100 285
+          C 100 325, 170 340, 170 380
+          C 170 420, 240 435, 240 475
+          C 240 515, 170 530, 170 570
+          C 170 610, 100 625, 100 665
+          C 100 705, 170 720, 170 760
+          C 170 800, 240 815, 240 855
+          C 240 895, 170 910, 170 950"
+              stroke="#b08d5b" stroke-width="2.5" fill="none" opacity="0.85"/>
       </svg>
-      <div class="program-heart">💗</div>
+      <div class="program-heart" id="programHeart">💗</div>
 
       <div class="program-item program-left">
         <div class="program-content">
@@ -236,6 +246,6 @@
   </div>
 </footer>
 
-<script src="script.js"></script>
+<script src="script.js?v=3"></script>
 </body>
 </html>
