@@ -6,9 +6,10 @@
   --brown-soft: #9c7a5f;
   --gold: #b08d5b;
   --text: #4a3a2f;
-  --serif: 'Cormorant Garamond', serif;
-  --script: 'Marck Script', cursive;
-  --sans: 'Montserrat', sans-serif;
+  --serif: 'Playfair Display', serif;
+  --serif-text: 'Crimson Text', serif;
+  --script: 'Playfair Display', serif;
+  --sans: 'Raleway', sans-serif;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -447,6 +448,94 @@ html.locked, body.no-scroll {
   line-height: 1.9;
   color: var(--brown);
   font-weight: 300;
+}
+
+/* GREETING */
+.greeting {
+  background: rgba(176, 141, 91, 0.08);
+}
+.greeting-emoji {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+  animation: float 3s ease-in-out infinite;
+}
+.greeting-title {
+  font-family: var(--serif);
+  font-size: clamp(28px, 5vw, 42px);
+  color: var(--brown-dark);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.greeting-text {
+  font-family: var(--serif-text);
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--brown);
+  margin-bottom: 26px;
+  font-style: italic;
+}
+.greeting-link {
+  display: inline-block;
+  padding: 12px 28px;
+  border: 2px solid var(--gold);
+  border-radius: 32px;
+  color: var(--brown-dark);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s;
+}
+.greeting-link:hover {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* PROGRAM */
+.program {
+  background: var(--cream);
+}
+.program-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.program-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  border-left: 4px solid var(--gold);
+  position: relative;
+}
+.program-time {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--gold);
+  min-width: 70px;
+}
+.program-icon {
+  font-size: 32px;
+  min-width: 40px;
+  text-align: center;
+}
+.program-text {
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--brown-dark);
+  font-weight: 500;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
 /* FOOTER */
