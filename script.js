@@ -82,7 +82,9 @@ if (programPath && programHeart && programTimeline) {
   const updateHeartOnPath = () => {
     const rect = programTimeline.getBoundingClientRect();
     const timelineTop = rect.top + window.scrollY;
-    const progress = Math.max(0, Math.min(1, (window.scrollY - timelineTop) / rect.height));
+    const centerOffset = window.innerHeight / 2;
+    const adjustedTimelineTop = timelineTop - centerOffset;
+    const progress = Math.max(0, Math.min(1, (window.scrollY - adjustedTimelineTop) / rect.height));
 
     const point = programPath.getPointAtLength(progress * pathLength);
     const scale = rect.width / 340; // viewBox width -> rendered width
