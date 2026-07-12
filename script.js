@@ -1,3 +1,21 @@
+// Music control
+const bgMusic = document.getElementById('bgMusic');
+const musicToggle = document.getElementById('musicToggle');
+let isPlaying = false;
+
+function toggleMusic() {
+  if (isPlaying) {
+    bgMusic.pause();
+    musicToggle.classList.add('muted');
+  } else {
+    bgMusic.play().catch(() => {});
+    musicToggle.classList.remove('muted');
+  }
+  isPlaying = !isPlaying;
+}
+
+musicToggle.addEventListener('click', toggleMusic);
+
 // Opening card
 const cover = document.getElementById('cover');
 
@@ -7,6 +25,13 @@ function openInvitation() {
   document.documentElement.classList.remove('locked');
   document.body.classList.remove('no-scroll');
   document.querySelector('.hero').classList.add('visible');
+
+  if (!isPlaying) {
+    bgMusic.volume = 0.3;
+    bgMusic.play().catch(() => {});
+    isPlaying = true;
+    musicToggle.classList.remove('muted');
+  }
 
   setTimeout(() => {
     cover.remove();
