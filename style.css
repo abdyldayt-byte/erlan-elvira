@@ -591,7 +591,15 @@ html.locked, body.no-scroll {
   font-family: var(--script);
   font-size: 30px;
   color: var(--gold);
+  margin-bottom: 20px;
+}
+.footer-parents {
+  font-family: var(--serif);
+  font-size: 16px;
+  color: var(--gold);
   margin-bottom: 48px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
 }
 
 .credit-btn {
